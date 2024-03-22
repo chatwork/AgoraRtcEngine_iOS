@@ -7,7 +7,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [.iOS(.v9)],
     products: [
-        .library(name: "RtcBasic", targets: ["AgoraRtcKit", "aosl", "Agorafdkaac", "Agoraffmpeg", "AgoraSoundTouch"]),
+        .library(name: "RtcBasic", targets: ["AgoraRtcKitWrapper", "aosl", "Agorafdkaac", "Agoraffmpeg", "AgoraSoundTouch"]),
         .library(name: "AINS", targets: ["AgoraAiNoiseSuppressionExtension"]),
         .library(name: "AudioBeauty", targets: ["AgoraAudioBeautyExtension"]),
         .library(name: "ClearVision", targets: ["AgoraClearVisionExtension"]),
@@ -88,6 +88,14 @@ let package = Package(
             name: "AgoraRtcKit",
             url: "https://download.agora.io/swiftpm/AgoraRtcEngine_iOS/4.3.0/AgoraRtcKit.xcframework.zip",
             checksum: "1464d1a5b4272935eb94ee0cc5f55692ab916c619340981e4214c835f068d563"
+        ),
+        .target(
+            name: "AgoraRtcKitWrapper",
+            dependencies: [
+                "AgoraRtcKit",
+            ],
+            path: "AgoraRtcKit-Wrapper",
+            resources: [.process("Resources/PrivacyInfo.xcprivacy")]
         ),
         .binaryTarget(
             name: "video_dec",

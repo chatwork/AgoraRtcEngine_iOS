@@ -95,7 +95,7 @@ let package = Package(
                 "AgoraRtcKit",
             ],
             path: "AgoraRtcKit-Wrapper",
-            resources: [.process("Resources/PrivacyInfo.xcprivacy")]
+            resources: [.copy("Resources/PrivacyInfo.xcprivacy")]
         ),
         .binaryTarget(
             name: "video_dec",
